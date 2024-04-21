@@ -113,7 +113,9 @@ export class Cliente{
      * @param {Telefone[]} value
      */
 	public set telefones(value: Telefone[]) {
-		this._telefones = value;
+		for(let i=0; i<this.telefones.length;i++){
+            this.telefones.push(value[i]);
+        }
 	}
 
 	

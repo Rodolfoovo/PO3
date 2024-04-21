@@ -20,7 +20,9 @@ class Venda{
      * @param {Produto[]} value
      */
 	public set produtos(value: Produto[]) {
-		this._produtos = value;
+		for(let i=0; i<this.produtos.length;i++){
+            this.produtos.push(value[i]);
+        }
 	}
 
     /**
