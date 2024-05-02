@@ -1,10 +1,26 @@
-var a = 6;
-var b = 15;
-if(a === 6){
-    let a = 5;
-    var b = 3;
-    console.log(a);
-    console.log(b);
+import Client from "./clients/Client";
+import Company from "./transport/Company";
+import InDriveTransport from "./transport/InDriveTransport";
+import NineNineTransport from "./transport/NineNineTransport";
+import UberTransport from "./transport/UberTransport";
+import ITransportFactory from "./transport/interfaces/ITransportFactory";
+
+const currentCompany = Company.INDRIVE;
+let factory: ITransportFactory;
+
+switch(currentCompany){
+    case Company.UBER:
+        factory = new UberTransport();
+        break;
+    case Company.NINENINE:
+        factory = new NineNineTransport();
+        break;
+    case Company.INDRIVE:
+        factory = new InDriveTransport();
+        break;
+    default:
+        console.log("Companhia não definida!");
+        
 }
-console.log(a);
-console.log(b);
+const client = new Client(factory);
+client.startRoute();
