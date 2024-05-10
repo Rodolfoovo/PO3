@@ -11,3 +11,7 @@ console.log("Tipo: " + sanduiche.sanduicheType);
 console.log("Pão: " + sanduiche.bread);
 console.log("Salada: " + sanduiche.salad);
 console.log("Carne" + sanduiche.protein);
+console.log("Molhos:")
+for(var i : number = 0; i < sanduiche.sauces.length; i++){
+    console.log(" " + sanduiche.sauces[i].sauce);
+}
