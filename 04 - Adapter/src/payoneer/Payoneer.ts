@@ -1,7 +1,7 @@
 import Token from "../utils/Token";
 import IPayoneerPayment from "./interfaces/IPayoneerPayment";
 
-export default class PayoneerPayment implements IPayoneerPayment{
+export default class Payoneer implements IPayoneerPayment{
     private token : Token;
     authToken(): Token {
         return new Token();
