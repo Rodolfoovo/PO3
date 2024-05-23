@@ -1,10 +1,11 @@
-var a = 6;
-var b = 15;
-if(a === 6){
-    let a = 5;
-    var b = 3;
-    console.log(a);
-    console.log(b);
+import CachedYoutubeClass from "./Cache/CachedYoutubeClass";
+import ThirdPartyYoutubeClass from "./platform/ThirdPartyYoutubeClass";
+import YoutubeManager from "./platform/YoutubeManager";
+import IYoutubeThirdParty from "./platform/interfaces/IYoutubeThirdParty";
+function Application(){
+    const aYoutubeService = new ThirdPartyYoutubeClass();
+    const aYoutubeProxy = new CachedYoutubeClass(aYoutubeService);
+    const manager = new YoutubeManager(aYoutubeProxy);
+    const id: number = 1;
+    manager.reactOnUserInput(id);
 }
-console.log(a);
-console.log(b);
