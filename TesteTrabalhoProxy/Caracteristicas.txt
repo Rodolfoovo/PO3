@@ -1,0 +1,18 @@
+Temos 3 tipo de classes principais:
+Entidade(Pessoa): vai ser basicamente o nosso objeto original, 
+que não queremos manipular diretamente
+Proxy: Até onde eu entendi existira um proxy por entidade, entretanto até onde 
+consegui determinar o proxy possui diversas funcionalidades.
+Entre elas:
+1.  Proxy Virtual: Gerencia a criação tardia de objetos pesados, como imagens 
+    de alta resolução ou grandes conjuntos de dados. Ele mantém uma referência 
+    para o objeto real e o cria somente quando é solicitado.
+2.  Proxy Remoto: Usado em sistemas distribuídos para representar objetos que 
+    residem em diferentes locais geográficos ou endereços de memória. 
+    Facilita a comunicação entre sistemas remotos, permitindo que o cliente 
+    acesse objetos em outro contexto.
+3.  Proxy de Proteção: Controla o acesso a um objeto, verificando as permissões do 
+    cliente antes de permitir que ele acesse o objeto real. 
+    Isso é vital para garantir que apenas usuários autorizados possam manipular o objeto.
+4.  Proxy de Cache: Armazena em cache os resultados de operações custosas para 
+    melhorar o desempenho.
