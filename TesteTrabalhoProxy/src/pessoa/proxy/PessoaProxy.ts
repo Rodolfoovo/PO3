@@ -3,13 +3,19 @@ import IPessoa from "../interfaces/IPessoa";
 
 export default class ProxyPessoa implements IPessoa {
     private pessoa: IPessoa;
-
-    constructor(nome: string) {
-        this.pessoa = new Pessoa(nome);
+    //Mantendo referencia do objeto que acabou de ser criado.
+    constructor(pessoa: IPessoa) {
+        this.pessoa = pessoa;
     }
 
     getNome(): string {
         // Podemos adicionar lógica extra aqui, como lazy loading ou caching
-        return this.pessoa.getNome();
+        if(this.checkAcess()){
+            return this.pessoa.getNome();
+        }
+    }
+    private checkAcess():boolean{
+        console.log("Proxy: verificando acesso.");
+        return true;
     }
 }
