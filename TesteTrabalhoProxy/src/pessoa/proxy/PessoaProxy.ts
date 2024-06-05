@@ -8,11 +8,16 @@ export default class ProxyPessoa implements IPessoa {
         this.pessoa = pessoa;
     }
 
-    getNome(): string {
+    request(): string {
         // Podemos adicionar lógica extra aqui, como lazy loading ou caching
         if(this.checkAcess()){
-            return this.pessoa.getNome();
+            this.cadastrarAcesso();
+            return this.pessoa.request();
         }
+    }
+
+    private cadastrarAcesso(){
+        console.log("Proxy: Guardando tempo da requisição.");
     }
     private checkAcess():boolean{
         console.log("Proxy: verificando acesso.");
