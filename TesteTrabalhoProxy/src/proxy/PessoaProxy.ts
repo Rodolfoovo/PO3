@@ -14,7 +14,7 @@ export default class ProxyPessoa implements IPessoa {
         //Aqui esta sendo feita a verificação de acesso do proxy.
         if(this.checkAccess()){
             //Cadastro de tentativa de acesso.
-            this.cadastrarAcesso();
+            this.storeAccess();
             //Chama a função de guardar dados, e caso os dados do usuário já não estejam na cache, 
             //ele os guarda em sua cache
             return this.storeData();
@@ -28,7 +28,7 @@ export default class ProxyPessoa implements IPessoa {
         }
         return this.pessoa.request();
     }
-    private cadastrarAcesso(){
+    private storeAccess(){
         console.log("Proxy: Guardando tempo da requisição.");
     }
     private checkAccess():boolean{
