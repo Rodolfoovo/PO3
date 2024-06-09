@@ -23,6 +23,7 @@ export default class ProxyPessoa implements IPessoa {
     private guardarDados():string{
         //Funcionalidade de cache, para que não precise de busca direta no "banco de dados"
         if(this.pessoa == null){
+            console.log("Proxy:Carregando dados na cache");
             this.pessoa = new Pessoa(this.nome);
         }
         return this.pessoa.request();
