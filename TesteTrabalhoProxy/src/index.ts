@@ -1,5 +1,5 @@
-import Pessoa from "./pessoa/Pessoa";
-import ProxyPessoa from "./pessoa/proxy/PessoaProxy";
+import Pessoa from "./entidades/Pessoa";
+import ProxyPessoa from "./proxy/PessoaProxy";
 
 // Exemplo de uso
 const pessoaReal = new Pessoa("João");

@@ -1,3 +1,4 @@
+import Permission from "./Permission";
 import IPessoa from "./interfaces/IPessoa";
 
 export default class Pessoa implements IPessoa{
@@ -5,4 +6,5 @@ export default class Pessoa implements IPessoa{
     public request(): string {
         return this.nome;
     }
+
 }
