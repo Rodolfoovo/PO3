@@ -17,10 +17,10 @@ export default class ProxyPessoa implements IPessoa {
             this.cadastrarAcesso();
             //Chama a função de guardar dados, e caso os dados do usuário já não estejam na cache, 
             //ele os guarda em sua cache
-            return this.guardarDados();
+            return this.storeData();
         }
     }
-    private guardarDados():string{
+    private storeData():string{
         //Funcionalidade de cache, para que não precise de busca direta no "banco de dados"
         if(this.pessoa == null){
             console.log("Proxy:Carregando dados na cache");
