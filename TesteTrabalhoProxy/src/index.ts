@@ -7,7 +7,7 @@ export const usuarioAcesso: Usuario =
     {
         email: "admin@gmail.com",
         password : "senha",
-        permission: Permission.ADMIN
+        permission: Permission.USER
     }
 
 // Exemplo de uso
