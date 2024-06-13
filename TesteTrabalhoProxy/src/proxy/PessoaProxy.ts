@@ -1,32 +1,43 @@
+import Permission from "../Usuario/Permission";
+import Usuario from "../Usuario/Usuario";
 import Pessoa from "../entidades/Pessoa";
 import IPessoa from "../entidades/interfaces/IPessoa";
 
 export default class ProxyPessoa implements IPessoa {
     private pessoa: IPessoa = null;
+    private usuarioAcesso:Usuario;
     private nome : string;
-    private nivelAcesso: number;
+
     //Mantendo referencia do objeto que acabou de ser criado.
-    constructor(pessoa: IPessoa) {
+    constructor(pessoa: IPessoa,usuarioAcesso: Usuario) {
         this.pessoa = pessoa;
+        this.usuarioAcesso = usuarioAcesso
     }
 
     public request(): string {
+        //Cadastro de acesso.
+        this.storeAccess();
         //Aqui esta sendo feita a verificação de acesso do proxy.
         if(this.checkAccess()){
-            //Cadastro de tentativa de acesso.
-            this.storeAccess();
-            //Chama a função de guardar dados, e caso os dados do usuário já não estejam na cache, 
-            //ele os guarda em sua cache
-            return this.storeData();
+            if(this.pessoa == null){
+                //Chama a função de guardar dados, e caso os dados do usuário já não estejam na cache, 
+                //ele os guarda em sua cache
+                return this.storeCache();
+            }
+            else{
+                return this.pessoa.request();
+            }
         }
-        console.log("Proxy: Acesso negado! Nivel de acesso muito baixo para a requisição!");
-        return null;
+        else{
+            console.log("Proxy: Acesso negado! Nivel de acesso muito baixo para a requisição!");
+            return null;
+        }
     }
-    private storeData():string{
+    private storeCache():string{
         //Funcionalidade de cache, para que não precise de busca direta no "banco de dados"
         if(this.pessoa == null){
             console.log("Proxy:Carregando dados na cache");
-            this.pessoa = new Pessoa(this.nome, this.nivelAcesso);
+            this.pessoa = new Pessoa(this.nome);
         }
         return this.pessoa.request();
     }
@@ -34,10 +45,10 @@ export default class ProxyPessoa implements IPessoa {
         console.log("Proxy: Guardando tempo da requisição.");
     }
     private checkAccess():boolean{
-        if(this.nivelAcesso == 2){
-        //"Verificação de acesso"
         console.log("Proxy: verificando acesso.");
-        
+        if(this.usuarioAcesso.permission == Permission.ADMIN){
+            console.log("Proxy: Acesso feito por um administrador, bem vindo!");
+        //"Verificação de acesso"        
         return true;
         }
         return false;
