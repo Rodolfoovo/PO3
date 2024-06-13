@@ -13,7 +13,7 @@ export const usuarioAcesso: Usuario =
 // Exemplo de uso
 const pessoaReal = new Pessoa("João");
 console.log("Acessando o nome da pessoa a partir da classe Pessoa.");
-console.log("Nome da pessoa real:", pessoaReal.request());
+console.log("Nome da pessoa real:", pessoaReal.request(), "\n");
 
 //Exemplo de uso do proxy
 const pessoaProxy = new ProxyPessoa(pessoaReal,usuarioAcesso);
